@@ -79,7 +79,7 @@ Vector initialization is by `vector<int> vec1 = {10, 20, 30};`
 If one does `vector<int> vec2(10);` will create vector of size 10, but `vector<int> vec3{12}` will initialize 12 as a value of vec3  
 **Curly braces in vectors is to initialize values**  
 Range-based loops are by:  
-```  
+```cpp  
 int sum = 0;  
 for (int x : squares) {
 		sum += x;
@@ -89,13 +89,13 @@ C++ 11 also has *auto* datatype, meaning the compiler will look and try to autom
 Lvalues can only be copied, ex. y = 5 and x = y means x will equal 5 after a copy is made  
 Rvalues can be moved, ex. string str = "hello" and string && str2 = "hello" the first is an lvalue but the second is an rvalue that can be moved and is more efficient  
 To change an Lvalue into an Rvalue use std::move(str)  
-```  
+```cpp  
 string x = "hello";  
 string y = x;  
 ```  
 The above will make to instances of "hello" both in y and x  
 To avoid this do the below  
-```  
+```cpp  
 string x = "hello";  
 string & y = x;  
 ```  
@@ -107,7 +107,7 @@ This above one will have x contain the string and y becomes a reference variable
 3. x = 2  
 4. i = 36, j = 4, k = 2
 5. Code below:    
-```
+```cpp
 class MyInt {
 		public:    
 			MyInt(int);
@@ -119,13 +119,13 @@ class MyInt {
 ```  
 6. Code below:  
  
-```  
+```cpp  
 MyInt::MyInt (int value) {
 		data = value;  
 }  
 ```  
 7. Code below:  
-```  
+```cpp  
 MyInt::int const get() {
 		return data;
 }  
@@ -146,7 +146,7 @@ In for loop with 3 primitive functions == 3n
 * Comparison of j and n
 Each increment is Theta(n)    
 In a for loop:   
-```
+```cpp
 for (j = 0; j < n; ++j) {
 		// 2 atomic  
 		for (k = 0; k < n; ++k) {
@@ -162,7 +162,7 @@ O(1) < O(log^log(n))< O(log(n)) < O((log(n)^c) (c > 1) < O(n^c) (0 < c < 1) < O(
 Which grows fastest? 2^n, n!, N^log(n)  
 O(n!) > O(2^n)  
 Example:   
-```  
+```cpp  
 long f (int n) {
 		if (n <= 1)  
 				return 1;  
@@ -215,7 +215,7 @@ Methods of traversal:
 **Printing order will be on test**   
 Binary tree is a tree with each parent only having *two* node children  
 Example:   
-```  
+```cpp  
 struct BinaryNode {  
 	Object element;  
 	BinaryNode *left;  
@@ -245,7 +245,7 @@ When creating recursive functions make sure that:
 3. Assume all recursive calls work  
 4. Don't duplicate work by making recursive calls twice  
 Example (recursive fibonacci):   
-```  
+```cpp  
 long fib(int k) {  
 	if (x == 0 || x == 1) return 1;  
 	return fib(k - 1) + fib(k - 2);
@@ -266,7 +266,7 @@ Should always use string or vector data types except when optimizing code for sp
 In C++11:  
 * Vectors can be initialized by curly braces for the elements in the vector {12, 13, 14}, or by parentheses for size of vector (12) vector of 12 in size  
 * Range based for loops:  
-```  
+```cpp  
 int sum = 0;  
 for (int x:squares) {  
 	sum += x;  
@@ -283,7 +283,7 @@ R-value
 	* Used to delete objects when they fall out of scope  
 	* delete key word is almost always used  
 	* Declared by `ObjName::~ObjName() {}`  
-```    
+```cpp    
 ~ObjName()   
 {delete storedValue;}
 ```  
@@ -291,7 +291,7 @@ R-value
 	* Copy if existing object is an lvalue  
 	* Used by `ObjName x = a;` (if previously initialized and not declared but later uses = that is assignment operator)  
 	* Both `ObjName(const ObjName &rhs)` and `ObjName(ObjName &&rhs)`  
-```  
+```cpp  
 ObjName(const ObjName &rhs)  
 {storedValue = new int{*rhs.storedValue};}
 ```  
@@ -299,7 +299,7 @@ ObjName(const ObjName &rhs)
 	* Copy if existing object is an rvalue
 	* Used by `ObjName x {a}` (if previously initialized and not declared but later uses = that is assignment operator)
 	* Both `ObjName(const ObjName &rhs)` and `ObjName(ObjName &&rhs)`  
-```  
+```cpp  
 ObjName(ObjName &&rhs) :storedValue{rhs.storedValue}  
 {rhs.storedValue = nullptr;}
 ```  
@@ -307,7 +307,7 @@ ObjName(ObjName &&rhs) :storedValue{rhs.storedValue}
 	* Only called when both LHS and RHS objects have been created  
 	* Is called if RHS is lvalue  
 	* `ObjName& operator=(const ObjName &rhs)`
-```  
+```cpp  
 ObjName& operator=(const ObjName &rhs) {  
 if (this != &rhs)  
 	*storedValue = *rhs.storedValue;  
@@ -318,7 +318,7 @@ return *this;
 	* Only called when both LHS and RHS objects have been created  
 	* Is called if RHS is rvalue
 	* `ObjName& operator=(ObjName &&rhs)`  
-```  
+```cpp  
 ObjName& operator=(ObjName &&rhs) {  
 	std::swap(storedValue, rhs.storedValue);  
 	return *this;
@@ -573,7 +573,7 @@ A tree is an undirected graph which satisfies the following:
 * An acyclic connected graph  
 * A connected graph with N nodes and N-1 edges  
 * A graph in which any two vertices are connected by *exactly* one path    
-![Tree example](tree.png)  
+![Tree example](./Midterm/photos/tree.png)  
 Rooted tree is the top most node of the tree, when initializing setting a root never matters   
 A *child* is the node that branches from the parent, while the *parent* is the base that nodes extend from   
 Root node can have either itself as the parent or null  
@@ -591,7 +591,7 @@ When inserting into BST need to ensure data type is comparable and check for 4 c
 3. Check if equal (meaning duplicate)  
 4. If all above pass, meaning farthest down in tree and where it should be but it doesn't exist then create the new node  
 For BST only reason it **can** be linear is if every value is being added to one side every time, like adding 1 2 3 4 5 6 would all be being added in a line meaning that it would iterate each time over each element   
-![Example of worst case](bstWorstCase.png)  
+![Example of worst case](./Midterm/photos/bstWorstCase.png)  
 For finding in a BST -1 can tell it is on the left subtree, 1 if it is on the right, and 0 if found (meaning return the current node)  
 **Preorder**  
 ```  
@@ -602,7 +602,7 @@ preorder(node) {
 	preorder(node.right)
 }  
 ```      
-![Preorder](preorder.png)
+![Preorder](./Midterm/photos/preorder.png)
 **Inorder**  
 ```  
 inorder(node){  
@@ -612,7 +612,7 @@ inorder(node){
 	inorder(node.right)  
 }    
 ```      
-![Inorder](inorder.png)
+![Inorder](./Midterm/photos/inorder.png)
 **Postorder**  
 ```  
 postorder(node) {  
@@ -623,10 +623,10 @@ postorder(node) {
 }    
 ```          
 When being used on BST values are printed **in order**
-![Postorder](postorder.png)
+![Postorder](./Midterm/photos/postorder.png)
 **Level order**  
 Goes in order by printing what's on each level of the tree, uses **breadth first search (queue)**  
-![Level Order](levelOrder.png)  
+![Level Order](./Midterm/photos/levelOrder.png)  
 ### Balanced Binary Search Tree and AVL Trees
 **Balanced Binary Search Tree**- Conforms to normal Binary Tree rules but also are self-balancing where the tree will adjust to maintain the minimum height it can achieve  
 **Complexity Analysis of BBST**:  
@@ -637,8 +637,13 @@ Goes in order by printing what's on each level of the tree, uses **breadth first
 They use the concept *Tree Rotation* to ensure balancing trees, two kinds:  
 1. Tree Invariant- Rule that ensures trees are balanced  
 2. Tree Rotations    
-	* Still maintains BST where numbers are still ordered except the root node is changed and the tree is altered to maintian 2 children nodes  
+	* Still maintains BST where numbers are still ordered except the root node is changed and the tree is altered to maintain 2 children nodes  
 	* Often trees can have references to their parent node as well as two children (like doubly linked list), but when rotating these 6 changes need to be made instead of 3
-![BBST Rotations](bbstRotation.png)  
-
+![BBST Rotations](./Midterm/photos/bbstRotation.png)  
+For insertions into AVL trees you need:  
+* Make sure values are comparable  
+* A value to store the balance factor   
+* The height of this node in the tree  
+* Pointers to left/right child nodes
+For rotations if the tree is in a line it only needs a left left rotation or right right rotations, if the tree is a mix of both left and right branches you need an appropriate left right rotation or right left rotation followed by a left left rotation or right right rotation
 [Top of midterm review](#midterm-review)
