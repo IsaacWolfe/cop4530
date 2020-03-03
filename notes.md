@@ -573,7 +573,7 @@ A tree is an undirected graph which satisfies the following:
 * An acyclic connected graph  
 * A connected graph with N nodes and N-1 edges  
 * A graph in which any two vertices are connected by *exactly* one path    
-![Tree example](./Midterm/photos/tree.png)  
+![Tree example](tree.png)  
 Rooted tree is the top most node of the tree, when initializing setting a root never matters   
 A *child* is the node that branches from the parent, while the *parent* is the base that nodes extend from   
 Root node can have either itself as the parent or null  
@@ -591,7 +591,7 @@ When inserting into BST need to ensure data type is comparable and check for 4 c
 3. Check if equal (meaning duplicate)  
 4. If all above pass, meaning farthest down in tree and where it should be but it doesn't exist then create the new node  
 For BST only reason it **can** be linear is if every value is being added to one side every time, like adding 1 2 3 4 5 6 would all be being added in a line meaning that it would iterate each time over each element   
-![Example of worst case](./Midterm/photos/bstWorstCase.png)  
+![Example of worst case](bstWorstCase.png)  
 For finding in a BST -1 can tell it is on the left subtree, 1 if it is on the right, and 0 if found (meaning return the current node)  
 **Preorder**  
 ```  
@@ -602,7 +602,7 @@ preorder(node) {
 	preorder(node.right)
 }  
 ```      
-![Preorder](./Midterm/photos/preorder.png)
+![Preorder](preorder.png)
 **Inorder**  
 ```  
 inorder(node){  
@@ -612,7 +612,7 @@ inorder(node){
 	inorder(node.right)  
 }    
 ```      
-![Inorder](./Midterm/photos/inorder.png)
+![Inorder](inorder.png)
 **Postorder**  
 ```  
 postorder(node) {  
@@ -623,10 +623,10 @@ postorder(node) {
 }    
 ```          
 When being used on BST values are printed **in order**
-![Postorder](./Midterm/photos/postorder.png)
+![Postorder](postorder.png)
 **Level order**  
 Goes in order by printing what's on each level of the tree, uses **breadth first search (queue)**  
-![Level Order](./Midterm/photos/levelOrder.png)  
+![Level Order](levelOrder.png)  
 ### Balanced Binary Search Tree and AVL Trees
 **Balanced Binary Search Tree**- Conforms to normal Binary Tree rules but also are self-balancing where the tree will adjust to maintain the minimum height it can achieve  
 **Complexity Analysis of BBST**:  
@@ -639,6 +639,6 @@ They use the concept *Tree Rotation* to ensure balancing trees, two kinds:
 2. Tree Rotations    
 	* Still maintains BST where numbers are still ordered except the root node is changed and the tree is altered to maintian 2 children nodes  
 	* Often trees can have references to their parent node as well as two children (like doubly linked list), but when rotating these 6 changes need to be made instead of 3
-![BBST Rotations](./Midterm/photos/bbstRotation.png)  
+![BBST Rotations](bbstRotation.png)  
 
 [Top of midterm review](#midterm-review)
